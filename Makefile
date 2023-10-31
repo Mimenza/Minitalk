@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 08:28:00 by emimenza          #+#    #+#              #
-#    Updated: 2023/10/31 12:04:44 by emimenza         ###   ########.fr        #
+#    Updated: 2023/10/31 12:11:00 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ libs:
 	@make -C ${FT_LIBFT}
 	
 $(NAME):$(OBJ) 
-		@$(AR) $(NAME) $(HEADER) $(LIBS) $(OBJ)
+		@$(AR) $(NAME) $(OBJ) $(LIBS)
 		@echo "$(GREEN)THE PROGRAM HAS BEEN COMPILED!$(NC)"
 
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.

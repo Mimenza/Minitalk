@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:28:02 by emimenza          #+#    #+#             */
-/*   Updated: 2023/10/31 11:05:02 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/10/31 13:02:29 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,26 @@
 void	ft_handler(int signal)
 {
 	(void)signal;
-	//traducir de bytes binarios a texto.
 	printf("acabo de recibir algo");
 }
 int	main(int argc, char **argv)
 {
 	int pid;
 
-	(void)argc;
-	(void)argv;	
+	(void)argv;
+	if (argc != 1)
+	{
+		printf("Try ./server\n");
+		return (0);
+	}
 	pid = getpid();
-	ft_printf("The id of the server is : %i \n", pid);
-	//ft_printf("The id of the server is : %i \n", pid);
-	while(argc == 1)
+	printf("The id of the server is : %i \n", pid);
+	printf("Waiting...\n");
+	while (argc == 1)
 	{
 		signal(SIGUSR1, ft_handler);
 		signal(SIGUSR2, ft_handler);
 		pause();
 	}
-	
+	return (0);
 }
