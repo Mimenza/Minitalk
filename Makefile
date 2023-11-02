@@ -26,13 +26,14 @@ CCFLAGS		=	-Wall -Wextra -Werror
 NAME		=	minitalk.a
 
 #Ficheros
-SRC			=	server.c client.c
+SRC			=	server.c client.c utils.c
 OBJ			=	$(SRC:.c=.o)
-FT_LIBFT	=	./Libft
+#FT_LIBFT	=	./Libft
 FT_PRINTF	=	./ft_printf
 HEADER		=	minitalk.h
 
-LIBS		=	${FT_LIBFT}/libft.a ${FT_PRINTF}/ft_printf.a
+LIBS		=	${FT_PRINTF}/ft_printf.a
+#${FT_LIBFT}/libft.a
 
 # REGLAS #
 all:	libs $(NAME)
@@ -40,10 +41,12 @@ all:	libs $(NAME)
 #Compilar
 libs:
 	@make -C ${FT_PRINTF}
-	@make -C ${FT_LIBFT}
+	@cp ${FT_PRINTF}/ft_printf.a $(NAME)
+#@make -C ${FT_LIBFT}
+#@cp ${FT_LIBFT}/libft.a $(NAME)
 	
 $(NAME):$(OBJ) 
-		@$(AR) $(NAME) $(OBJ) $(LIBS)
+		@$(AR) $(NAME) $(OBJ) $(LIBS) $(HEADER)
 		@echo "$(GREEN)THE PROGRAM HAS BEEN COMPILED!$(NC)"
 
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.
@@ -54,14 +57,14 @@ $(NAME):$(OBJ)
 
 # Eliminar temporales
 clean:
-	@make clean -C ${FT_LIBFT}
+#@make clean -C ${FT_LIBFT}
 	@make clean -C ${FT_PRINTF}
 	$(DEL) $(OBJ)
 	@echo "$(RED)OBJECT AND TEMP FILES DELETED!!$(NC)"
 
 fclean: clean
 	$(DEL) $(NAME)
-	$(DEL) ${FT_LIBFT}/libft.a $(NAME)
+#$(DEL) ${FT_LIBFT}/libft.a $(NAME)
 	$(DEL) ${FT_PRINTF}/ft_printf.a $(NAME)
 
 re:	fclean all

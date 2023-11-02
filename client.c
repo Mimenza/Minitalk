@@ -14,20 +14,26 @@
 
 void	ft_sendData(int pid, char c)
 {
-	int i;
+	int	i;
+	int	bit;
 
-	i = 0;
-	printf("sending data");
-	while (i <= 7)
+	i = 7;
+	bit = 0;
+    while (i >= 0)
 	{
-		if ((c & (1 << i)) ? '1' : '0' == 1)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
+        bit = (c >> i) & 1;
+        if (bit == 1) {
+            kill(pid, SIGUSR1);
+
+        } else {
+            kill(pid, SIGUSR2);
+        }
 		usleep(100);
-		i++;
-	}
+        i--;
+    }
 }
+
+
 
 int main(int argc, char **argv)
 {
@@ -37,7 +43,7 @@ int main(int argc, char **argv)
 	i = 0;
 	if (argc == 3)
 	{
-		pid = atoi(argv[1]);
+		pid = ft_atoi(argv[1]);
 		while (argv[2][i])
 		{	
 			ft_sendData(pid, argv[2][i]);
@@ -47,7 +53,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Wrong number of arguments");
+		ft_printf("Wrong number of arguments");
 		return(1);
 	}
 	return(0);

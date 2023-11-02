@@ -34,13 +34,11 @@ static int	ft_len(long n)
 char	*ft_itoa(int n)
 {
 	int		size;
-	int		s_size;
 	char	*ptr;
 	long	num;
 
 	num = n;
 	size = ft_len(num);
-	s_size = size;
 	ptr = (char *)ft_calloc (size + 1, sizeof(char));
 	if (!ptr)
 		return (NULL);
