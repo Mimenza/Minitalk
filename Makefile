@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 08:28:00 by emimenza          #+#    #+#              #
-#    Updated: 2023/10/31 12:11:00 by emimenza         ###   ########.fr        #
+#    Updated: 2023/11/03 00:33:50 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ NAME		=	minitalk.a
 
 #Ficheros
 SRC			=	server.c client.c utils.c
+SRC_BONUS	=	server_bonus.c client_bonus.c
 OBJ			=	$(SRC:.c=.o)
+OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 #FT_LIBFT	=	./Libft
 FT_PRINTF	=	./ft_printf
 HEADER		=	minitalk.h
@@ -38,6 +40,7 @@ LIBS		=	${FT_PRINTF}/ft_printf.a
 # REGLAS #
 all:	libs $(NAME)
 
+bonus:	libs bonus_
 #Compilar
 libs:
 	@make -C ${FT_PRINTF}
@@ -48,6 +51,10 @@ libs:
 $(NAME):$(OBJ) 
 		@$(AR) $(NAME) $(OBJ) $(LIBS) $(HEADER)
 		@echo "$(GREEN)THE PROGRAM HAS BEEN COMPILED!$(NC)"
+
+bonus_:$(OBJ) $(OBJ_BONUS)
+		@$(AR) $(NAME) $(OBJ) $(OBJ_BONUS) $(LIBS) $(HEADER)
+		@echo "$(GREEN)THE BONUS PROGRAM HAS BEEN COMPILED!$(NC)"
 
 # $@ : The file name of the target of the rule. If the target is an archive member, then ‘$@’ is the name of the archive file.
 # $< : The name of the first prerequisite.
@@ -67,4 +74,8 @@ fclean: clean
 #$(DEL) ${FT_LIBFT}/libft.a $(NAME)
 	$(DEL) ${FT_PRINTF}/ft_printf.a $(NAME)
 
+clean_bonus:
+	@make clean -C ${FT_PRINTF}
+	$(DEL) $(OBJ) $(OBJ_BONUS)
+	@echo "$(RED)OBJECT AND TEMP FILES DELETED!!$(NC)"
 re:	fclean all
