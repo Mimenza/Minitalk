@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:28:26 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/03 12:53:35 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/11/04 16:47:54 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,21 @@ static void    ft_receiver(int signal)
 {
 	(void)signal;
     ft_printf("The msg has been delivered and received correctly");
-	return;
 }
 
 void	ft_sendData(int pid, char c)
 {
-	int	i;
 	int	bit;
 
-	i = 7;
 	bit = 0;
-    while (i >= 0)
+    while (bit < 8)
 	{
-        bit = (c >> i) & 1;
-        if (bit == 1) {
+        if ((c & (0x01 << bit)) != 0)
             kill(pid, SIGUSR1);
-
-        } else {
+ 		else 
             kill(pid, SIGUSR2);
-        }
-		usleep(1100);
-        i--;
+		usleep(200);
+        bit ++;
     }
 }
 
