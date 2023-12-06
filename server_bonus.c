@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:28:30 by emimenza          #+#    #+#             */
-/*   Updated: 2023/11/04 16:50:58 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:10:14 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_handler(int signal, siginfo_t *info, void *config)
 {
-	static int		byte;
-	static int		word_size;
+	static int	byte;
+	static int	word_size;
 
 	(void)info;
 	(void)config;
@@ -31,11 +31,10 @@ void	ft_handler(int signal, siginfo_t *info, void *config)
 	}
 }
 
-
 int	main(int argc, char **argv)
 {
-	int                 pid;
-    struct sigaction    sa;
+	int					pid;
+	struct sigaction	sa;
 
 	(void)argv;
 	if (argc != 1)
@@ -46,9 +45,9 @@ int	main(int argc, char **argv)
 	pid = getpid();
 	ft_printf("The id of the server is : %i \n", pid);
 	ft_printf("Waiting...\n");
-    sa.sa_sigaction = ft_handler;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_flags = 0;
+	sa.sa_sigaction = ft_handler;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = 0;
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

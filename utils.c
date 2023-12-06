@@ -1,3 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 08:01:48 by emimenza          #+#    #+#             */
+/*   Updated: 2023/11/06 08:04:43 by emimenza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minitalk.h"
+
 int	ft_atoi(const char *str)
 {
 	int	number;
@@ -20,18 +34,3 @@ int	ft_atoi(const char *str)
 	}
 	return (number * sign);
 }
-
-	int	ft_len_int(long n)
-	{
-	int    len;
-
-	len = 0;
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
-	{
-		len++;
-		n = n / 10;
-	}
-	return (len);
-	}

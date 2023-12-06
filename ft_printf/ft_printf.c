@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:05:11 by emimenza          #+#    #+#             */
-/*   Updated: 2023/10/31 08:58:59 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:12:28 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (length);
 }
-
