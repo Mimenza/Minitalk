@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 00:28:26 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/06 11:12:10 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:16:17 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int argc, char **argv)
 		{
 			signal(SIGUSR1, ft_receiver);
 			signal(SIGUSR2, ft_receiver);
-			ft_sendData(pid, argv[2][i]);
+			ft_send_data(pid, argv[2][i]);
 			i++;
 		}
 		ft_send_data(pid, '\n');

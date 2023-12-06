@@ -6,7 +6,7 @@
 /*   By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:28:02 by emimenza          #+#    #+#             */
-/*   Updated: 2023/12/06 11:11:02 by emimenza         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:17:41 by emimenza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	(void)argv;
 	if (argc != 1)
 	{
-		ft_printf("Try ./server\n");
+		ft_printf("Try ./server.exe\n");
 		return (0);
 	}
 	ft_printf("The id of the server is : %i \n", getpid());

@@ -6,7 +6,7 @@
 #    By: emimenza <emimenza@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/31 08:28:00 by emimenza          #+#    #+#              #
-#    Updated: 2023/11/03 00:33:50 by emimenza         ###   ########.fr        #
+#    Updated: 2023/12/06 10:59:22 by emimenza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,23 +30,19 @@ SRC			=	server.c client.c utils.c
 SRC_BONUS	=	server_bonus.c client_bonus.c
 OBJ			=	$(SRC:.c=.o)
 OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
-#FT_LIBFT	=	./Libft
-FT_PRINTF	=	./ft_printf
+FT_PRINTF	=	ft_printf
 HEADER		=	minitalk.h
 
 LIBS		=	${FT_PRINTF}/ft_printf.a
-#${FT_LIBFT}/libft.a
 
 # REGLAS #
 all:	libs $(NAME)
-
 bonus:	libs bonus_
+
 #Compilar
 libs:
 	@make -C ${FT_PRINTF}
 	@cp ${FT_PRINTF}/ft_printf.a $(NAME)
-#@make -C ${FT_LIBFT}
-#@cp ${FT_LIBFT}/libft.a $(NAME)
 	
 $(NAME):$(OBJ) 
 		@$(AR) $(NAME) $(OBJ) $(LIBS) $(HEADER)
@@ -64,18 +60,17 @@ bonus_:$(OBJ) $(OBJ_BONUS)
 
 # Eliminar temporales
 clean:
-#@make clean -C ${FT_LIBFT}
 	@make clean -C ${FT_PRINTF}
 	$(DEL) $(OBJ)
 	@echo "$(RED)OBJECT AND TEMP FILES DELETED!!$(NC)"
 
 fclean: clean
 	$(DEL) $(NAME)
-#$(DEL) ${FT_LIBFT}/libft.a $(NAME)
 	$(DEL) ${FT_PRINTF}/ft_printf.a $(NAME)
 
 clean_bonus:
 	@make clean -C ${FT_PRINTF}
 	$(DEL) $(OBJ) $(OBJ_BONUS)
 	@echo "$(RED)OBJECT AND TEMP FILES DELETED!!$(NC)"
+	
 re:	fclean all
